@@ -24,6 +24,23 @@ model Clientes {
   data_criacao DateTime @default(now())
   data_alteracao DateTime @updatedAt
 
+  pedidos Pedidos []
+
   @@map("clientes")
+
+}
+
+model Pedidos {
+  id String @id @default(uuid())
+  numero_pedido String
+  data_pedido DateTime @default(now())
+  valor_total Float
+
+  clientes Clientes @relation(fields: [idCliente], references: [id])
+  idCliente String
+
+  data_alteracao DateTime @updatedAt
+
+  @@map("pedidos")
 
 }
