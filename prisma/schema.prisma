@@ -44,3 +44,25 @@ model Pedidos {
   @@map("pedidos")
 
 }
+
+model Categorias {
+  id String @id @default(uuid())
+  categoria String
+
+  produtos Produtos []
+
+  @@map("categorias")
+
+}
+
+model Produtos {
+  id String @id @default(uuid())
+  nome_produto String
+  descricao String
+  valor Float
+
+  categorias Categorias @relation(fields: [idCategoria], references: [id])
+  idCategoria String
+
+  @@map("produtos")
+}
