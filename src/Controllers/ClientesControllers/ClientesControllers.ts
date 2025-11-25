@@ -15,6 +15,13 @@ class ClientesControllers {
 
         return res.json(resposta)
     }
+
+    async visualizarClientes(req:Request, res:Response){
+        const enviarDados =  new ServicesClientes()
+        const resposta = await enviarDados.visualizarCLientes()
+        return res.json(resposta)
+    }
+
 }
 
 

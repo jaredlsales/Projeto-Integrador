@@ -22,6 +22,21 @@ class ServicesClientes {
 
         return ({dados: "Cadastro Efetuado com sucesso"})
     }
+
+    async visualizarCLientes(){
+        const resposta = await prismaClient.clientes.findMany({
+            select:{
+                id: true,
+                nome: true,
+                email: true,
+                telefone: true,
+                data_nascimento: true
+            }
+        })
+
+        return resposta
+        
+    }
 }
 
 
