@@ -21,6 +21,20 @@ class ServicesProdutos {
 
         return({dados:"Produtos enviado com sucesso"})
     }
+
+    async visualizarProdutos (){
+        const resposta = await prismaClient.produtos.findMany({
+            select:{
+                id: true,
+                nome_produto: true,
+                descricao: true,
+                valor: true
+            }
+        })
+
+        return resposta
+        
+    }
 }
 
 

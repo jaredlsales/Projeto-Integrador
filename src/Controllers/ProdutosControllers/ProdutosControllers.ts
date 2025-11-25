@@ -1,4 +1,4 @@
-import {Request, Response} from "express"
+import {json, Request, Response} from "express"
 import {ServicesProdutos} from "../../Services/ServicesProdutos/ServicesProdutos"
 
 class ProdutosControllers {
@@ -13,7 +13,14 @@ class ProdutosControllers {
         })
 
         return res.json(resposta)
-    } 
+    }
+
+    async visualizarProdutos (req:Request, res:Response){
+        const enviarDados = new ServicesProdutos()
+        const resposta = await enviarDados.visualizarProdutos()
+        return res.json(resposta)
+    }
+    
 }
 
 export {ProdutosControllers}

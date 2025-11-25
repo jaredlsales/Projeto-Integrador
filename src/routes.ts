@@ -18,6 +18,7 @@ router.post("/PagamentoControllers", new PagamentoControllers().pagamentoControl
 
 //EndPoint - Metodo GET
 router.get("/VisualizarClientes", new ClientesControllers().visualizarClientes)
+router.get("/VisualizarProdutos", new ProdutosControllers().visualizarProdutos)
 
 export default router
 
