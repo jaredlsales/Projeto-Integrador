@@ -41,6 +41,10 @@ model Pedidos {
 
   data_alteracao DateTime @updatedAt
 
+  itenspedidos ItensPedidos []
+
+  pagamento Pagamento []
+
   @@map("pedidos")
 
 }
@@ -48,6 +52,9 @@ model Pedidos {
 model Categorias {
   id String @id @default(uuid())
   categoria String
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
 
   produtos Produtos []
 
@@ -64,5 +71,45 @@ model Produtos {
   categorias Categorias @relation(fields: [idCategoria], references: [id])
   idCategoria String
 
+  itenspedidos ItensPedidos []
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
   @@map("produtos")
 }
+
+model ItensPedidos {
+  id String @id @default(uuid())
+
+  quantidade Int
+  total_unitario Float
+
+  pedidos Pedidos @relation(fields: [idPedido], references: [id])
+  idPedido String
+
+  produtos Produtos @relation(fields: [idProduto], references: [id])
+  idProduto String
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  @@map("itenspedidos")
+}
+
+model Pagamento {
+  id String @id @default(uuid())
+  valor_pagamento Float
+  tipo_pagamento String
+
+  data_pagamento DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  pedidos Pedidos @relation(fields: [idPedido], references: [id])
+  idPedido String
+
+
+  @@map("pagamento")
+
+}
+

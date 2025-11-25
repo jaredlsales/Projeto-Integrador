@@ -1,0 +1,19 @@
+import {Request, Response} from "express"
+import {ServicesPagamentos} from "../../Services/ServicesPagamento/ServicesPagamento"
+
+class PagamentoControllers {
+    async pagamentoControllers (req:Request, res:Response){
+        const {valor_pagamento, tipo_pagamento, idPedido} = req.body
+        const enviarDados = new ServicesPagamentos()
+        const resposta = await enviarDados.servicesPagamento({
+            valor_pagamento,
+            tipo_pagamento,
+            idPedido
+        })
+
+        return res.json(resposta)
+    }
+}
+
+
+export {PagamentoControllers}
