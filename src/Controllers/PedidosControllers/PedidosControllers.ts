@@ -15,6 +15,13 @@ class PedidosControllers {
         return res.json(respota)
     }
 
+
+    async visualizarPedidos (req:Request, res:Response){
+        const enviarDados = new ServicesPedidos()
+        const reposta = await enviarDados.visualizarPedidos()
+        return res.json(reposta)
+    }
+
 }
 
 export {PedidosControllers}
