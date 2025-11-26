@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Clientes {
+  id String @id @default(uuid())
+  nome String
+  email String
+  senha String
+  telefone String
+  data_nascimento DateTime 
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  pedidos Pedidos []
+
+  @@map("clientes")
+
+}
+
+model Pedidos {
+  id String @id @default(uuid())
+  numero_pedido String
+  data_pedido DateTime @default(now())
+  valor_total Float
+
+  clientes Clientes @relation(fields: [idCliente], references: [id])
+  idCliente String
+
+  data_alteracao DateTime @updatedAt
+
+  itenspedidos ItensPedidos []
+
+  pagamento Pagamento []
+
+  @@map("pedidos")
+
+}
+
+model Categorias {
+  id String @id @default(uuid())
+  categoria String
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  produtos Produtos []
+
+  @@map("categorias")
+
+}
+
+model Produtos {
+  id String @id @default(uuid())
+  nome_produto String
+  descricao String
+  valor Float
+
+  categorias Categorias @relation(fields: [idCategoria], references: [id])
+  idCategoria String
+
+  itenspedidos ItensPedidos []
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  @@map("produtos")
+}
+
+model ItensPedidos {
+  id String @id @default(uuid())
+
+  quantidade Int
+  total_unitario Float
+
+  pedidos Pedidos @relation(fields: [idPedido], references: [id])
+  idPedido String
+
+  produtos Produtos @relation(fields: [idProduto], references: [id])
+  idProduto String
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  @@map("itenspedidos")
+}
+
+model Pagamento {
+  id String @id @default(uuid())
+  valor_pagamento Float
+  tipo_pagamento String
+
+  data_pagamento DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  pedidos Pedidos @relation(fields: [idPedido], references: [id])
+  idPedido String
+
+
+  @@map("pagamento")
+
+}
+
