@@ -28,6 +28,16 @@ class CategoriasControllers {
 
         return res.json(resposta)
     }
+
+    async apagarCategorias(req:Request, res:Response){
+        const {id} = req.params
+        const enviarDados = new ServicesCategoria()
+        const resposta =  await enviarDados.apagarCategoria({
+            id
+        })
+
+        return res.json(resposta)
+    }
 }
 
 

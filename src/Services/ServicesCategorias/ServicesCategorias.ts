@@ -9,6 +9,10 @@ interface VisualizarCategoria {
     categoria: string
 }
 
+interface ApagarCategoria {
+    id: string
+}
+
 class ServicesCategoria {
     async servicesCategoria ({categoria}: Categoria) {
         await prismaClient.categorias.create({
@@ -46,6 +50,16 @@ class ServicesCategoria {
 
         return ({dados:"Alteração feito com sucesso"})
         
+    }
+
+    async apagarCategoria({id}: ApagarCategoria){
+        await prismaClient.categorias.delete({
+            where:{
+                id:id
+            }
+        })
+
+        return ({dados:"Registro apagado com sucesso"})
     }
 }
 
