@@ -14,6 +14,10 @@ interface AtualizarProdutos {
     valor: number,
 }
 
+interface ApagarProdutos {
+    id: string
+}
+
 class ServicesProdutos {
     async servicesProdutos ({nome_produto,descricao,valor,idCategoria}: Produtos) {
         await prismaClient.produtos.create({
@@ -56,6 +60,17 @@ class ServicesProdutos {
         })
 
         return ({dados:"Alteração feito com sucesso"})
+    }
+
+    async apagarProdutos ({id}: ApagarProdutos){
+        await prismaClient.produtos.delete({
+            where:{
+                id:id
+            }
+        })
+
+        return ({dados:"Registro excluido com sucesso"})
+
     }
 }
 

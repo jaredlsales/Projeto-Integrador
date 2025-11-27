@@ -33,6 +33,16 @@ class ProdutosControllers {
 
         return res.json(resposta)
     }
+
+    async apagarProdutos (req:Request, res:Response){
+        const {id} = req.params
+        const enviarDados =  new ServicesProdutos()
+        const resposta = await enviarDados.apagarProdutos({
+            id
+        })
+
+        return res.json(resposta)
+    }
     
 }
 
