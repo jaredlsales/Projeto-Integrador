@@ -13,6 +13,12 @@ class PagamentoControllers {
 
         return res.json(resposta)
     }
+
+    async visualizarPagamento(req:Request, res:Response){
+        const enviarDados = new ServicesPagamentos()
+        const resposta =  await enviarDados.visualizarPagamento()
+        return res.json(resposta)
+    }
 }
 
 

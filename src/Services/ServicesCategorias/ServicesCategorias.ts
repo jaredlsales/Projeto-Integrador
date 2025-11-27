@@ -16,6 +16,18 @@ class ServicesController {
 
 
     }
+
+    async visualizarPagamento (){
+        const resposta =  await prismaClient.categorias.findMany({
+            select:{
+                id: true,
+                categoria: true
+            }
+        })
+
+        return resposta
+        
+    }
 }
 
 

@@ -19,6 +19,19 @@ class ServicesPagamentos {
         return({dados:"Cadastro Efetuado com sucesso"})
     }
 
+    async visualizarPagamento (){
+        const resposta = await prismaClient.pagamento.findMany({
+            select:{
+                id: true,
+                valor_pagamento: true,
+                tipo_pagamento: true,
+                data_pagamento: true
+            }
+        })
+
+        return resposta
+    }
+
 }
 
 export {ServicesPagamentos}

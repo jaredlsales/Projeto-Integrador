@@ -11,6 +11,12 @@ class CategoriasControllers {
 
         return res.json(resposta)
     }
+
+    async visualizarCategorias(req:Request, res:Response){
+        const enviarDados =  new ServicesController()
+        const resposta =  await enviarDados.visualizarPagamento()
+        return res.json(resposta)
+    }
 }
 
 

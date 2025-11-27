@@ -21,6 +21,20 @@ class ServicesItensPedidos {
         return({dados:"Cadastro Efetuado com sucesso"})
     }
 
+    async visualizarItensPedidos(){
+        const resposta = await prismaClient.itensPedidos.findMany({
+            select:{
+                id: true,
+                quantidade: true,
+                total_unitario: true,
+                
+            }
+        })
+
+        return resposta
+    
+    }
+
 }
 
 export {ServicesItensPedidos}

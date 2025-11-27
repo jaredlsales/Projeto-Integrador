@@ -14,6 +14,12 @@ class ItensPedidosControllers {
 
         return res.json(resposta)
     }
+
+    async visualizarItensPedidos (req:Request, res:Response){
+        const enviarDados = new ServicesItensPedidos()
+        const resposta = await enviarDados.visualizarItensPedidos()
+        return res.json(resposta)
+    }
 }
 
 

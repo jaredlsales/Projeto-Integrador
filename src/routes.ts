@@ -20,6 +20,9 @@ router.post("/PagamentoControllers", new PagamentoControllers().pagamentoControl
 router.get("/VisualizarClientes", new ClientesControllers().visualizarClientes)
 router.get("/VisualizarProdutos", new ProdutosControllers().visualizarProdutos)
 router.get("/VisualizarPedidos", new PedidosControllers().visualizarPedidos)
+router.get("/VisualizarItensPedidos", new ItensPedidosControllers().visualizarItensPedidos)
+router.get("/VisualizarPagamento", new PagamentoControllers().visualizarPagamento)
+router.get("/VisualizarCategoria", new CategoriasControllers().visualizarCategorias)
 
 export default router
 
