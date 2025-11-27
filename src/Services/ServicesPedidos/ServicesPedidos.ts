@@ -7,6 +7,12 @@ interface Pedidos {
     idCliente: string
 }
 
+interface AtualizarPedidos {
+    id: string,
+    numero_pedido: string,
+    valor_total: number,
+}
+
 
 
 class ServicesPedidos {
@@ -34,6 +40,22 @@ class ServicesPedidos {
 
        return resposta
        
+    }
+
+    async atualizarPedidos({id, numero_pedido, valor_total}: AtualizarPedidos){
+        await prismaClient.pedidos.update({
+            where:{
+                id:id
+            },
+            data:{
+                numero_pedido:numero_pedido,
+                valor_total:valor_total
+            }
+        })
+
+        return ({dados:"Alteração feito com sucesso"})
+       
+
     }
 }
 

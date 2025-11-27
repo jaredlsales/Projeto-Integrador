@@ -24,5 +24,9 @@ router.get("/VisualizarItensPedidos", new ItensPedidosControllers().visualizarIt
 router.get("/VisualizarPagamento", new PagamentoControllers().visualizarPagamento)
 router.get("/VisualizarCategoria", new CategoriasControllers().visualizarCategorias)
 
+//EndPoint - Metodo PUT (Update)
+router.put("/AtualizarCLientes", new ClientesControllers().atualizarClientes)
+router.put("/AtualizarPedidos", new PedidosControllers().atualizarPedidos)
+
 export default router
 

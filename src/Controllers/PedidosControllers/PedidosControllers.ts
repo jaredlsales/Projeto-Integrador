@@ -22,6 +22,18 @@ class PedidosControllers {
         return res.json(reposta)
     }
 
+    async atualizarPedidos (req:Request, res:Response){
+        const {id, numero_pedido, valor_total} = req.body
+        const enviarDados = new ServicesPedidos()
+        const resposta =  await enviarDados.atualizarPedidos({
+            id,
+            numero_pedido,
+            valor_total
+        })
+
+        return res.json(resposta)
+    }
+
 }
 
 export {PedidosControllers}
