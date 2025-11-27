@@ -31,6 +31,16 @@ class PagamentoControllers {
 
         return res.json(resposta)
     }
+
+    async apagarPagamento (req:Request, res:Response){
+        const {id} = req.params
+        const enviarDados =  new ServicesPagamentos()
+        const resposta =  await enviarDados.apagarPagamento({
+            id
+        })
+
+        return res.json(resposta)
+    }
 }
 
 

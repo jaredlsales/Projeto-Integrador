@@ -12,6 +12,10 @@ interface AtualizarPagamento {
     tipo_pagamento: string,
 }
 
+interface ApagarPagamento {
+    id: string
+}
+
 class ServicesPagamentos {
     async servicesPagamento ({valor_pagamento,tipo_pagamento,idPedido}: Pagamento){
         await prismaClient.pagamento.create({
@@ -51,6 +55,17 @@ class ServicesPagamentos {
 
         return ({dados:"Alteração feita com sucesso"})
     }
+
+    async apagarPagamento({id}: ApagarPagamento){
+        await prismaClient.pagamento.delete({
+            where:{
+                id:id
+            }
+        })
+
+        return ({dados:"Registro excluido com sucesso"})
+    }
+
 
 
 }
