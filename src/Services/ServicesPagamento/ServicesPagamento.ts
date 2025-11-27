@@ -6,6 +6,12 @@ interface Pagamento {
     idPedido: string
 }
 
+interface AtualizarPagamento {
+    id: string,
+    valor_pagamento: number,
+    tipo_pagamento: string,
+}
+
 class ServicesPagamentos {
     async servicesPagamento ({valor_pagamento,tipo_pagamento,idPedido}: Pagamento){
         await prismaClient.pagamento.create({
@@ -30,6 +36,20 @@ class ServicesPagamentos {
         })
 
         return resposta
+    }
+
+    async atualizarPagamento({id, valor_pagamento, tipo_pagamento}: AtualizarPagamento){
+        await prismaClient.pagamento.update({
+            where:{
+                id:id
+            },
+            data:{
+                valor_pagamento:valor_pagamento,
+                tipo_pagamento:tipo_pagamento
+            }
+        })
+
+        return ({dados:"Alteração feita com sucesso"})
     }
 
 }

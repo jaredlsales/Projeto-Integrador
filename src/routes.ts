@@ -30,6 +30,7 @@ router.put("/AtualizarPedidos", new PedidosControllers().atualizarPedidos)
 router.put("/AtualizarCategorias", new CategoriasControllers().atualizarCategorias)
 router.put("/AtualizarProdutos", new ProdutosControllers().atualizarProdutos)
 router.put("/AtualizarItensPedidos", new ItensPedidosControllers().atualizarItensPedidos)
+router.put("/AtualizarPagamento", new PagamentoControllers().atualizarPagamento)
 
 export default router
 

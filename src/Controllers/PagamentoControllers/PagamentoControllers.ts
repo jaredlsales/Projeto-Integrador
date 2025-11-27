@@ -19,6 +19,18 @@ class PagamentoControllers {
         const resposta =  await enviarDados.visualizarPagamento()
         return res.json(resposta)
     }
+
+    async atualizarPagamento(req:Request, res:Response){
+        const {id, valor_pagamento, tipo_pagamento} = req.body
+        const enviarDados =  new ServicesPagamentos()
+        const resposta =  await enviarDados.atualizarPagamento({
+            id,
+            valor_pagamento,
+            tipo_pagamento
+        })
+
+        return res.json(resposta)
+    }
 }
 
 
