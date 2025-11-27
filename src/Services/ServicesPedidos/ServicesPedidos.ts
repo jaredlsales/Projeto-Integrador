@@ -13,6 +13,10 @@ interface AtualizarPedidos {
     valor_total: number,
 }
 
+interface ApagarPedidos {
+    id: string
+}
+
 
 
 class ServicesPedidos {
@@ -55,7 +59,31 @@ class ServicesPedidos {
 
         return ({dados:"Alteração feito com sucesso"})
        
+    }
 
+    async apagarPedidos ({id}: ApagarPedidos){
+        //Somente apagando os ItensPedidos e Pagamentos que sao "filhos" que vai conseguir apagar os pedidos.
+        //O erro no Insomnia aconteceu porque o banco não deixava você apagar um Pedido que ainda tinha ItensPedidos e Pagamentos vinculados. Isso é esperado em bancos relacionais: primeiro você precisa remover os filhos, depois o pai.
+        //Apagar todos os itens vinculados ao pedido (registros filhos -dependentes-) 
+        await prismaClient.itensPedidos.deleteMany({
+            where:{
+                idPedido:id
+            }
+        })
+        //Apagar todos os itens vinculados ao pedido (registros filhos -dependentes-) 
+        await prismaClient.pagamento.deleteMany({
+            where:{
+                idPedido:id
+            }
+        })
+        //Agora apaga o pedido
+        await prismaClient.pedidos.delete({
+            where:{
+                id:id
+            }
+        })
+
+        return ({dados:"Registro Apagado com Sucesso"})
     }
 }
 

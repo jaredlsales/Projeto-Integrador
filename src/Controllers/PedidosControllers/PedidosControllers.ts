@@ -34,6 +34,16 @@ class PedidosControllers {
         return res.json(resposta)
     }
 
+    async apagarPedidos (req:Request, res:Response){
+        const {id} = req.params
+        const enviarDados = new ServicesPedidos()
+        const resposta =  await enviarDados.apagarPedidos({
+            id
+        })
+
+        return res.json(resposta)
+    }
+
 }
 
 export {PedidosControllers}

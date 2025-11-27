@@ -32,5 +32,8 @@ router.put("/AtualizarProdutos", new ProdutosControllers().atualizarProdutos)
 router.put("/AtualizarItensPedidos", new ItensPedidosControllers().atualizarItensPedidos)
 router.put("/AtualizarPagamento", new PagamentoControllers().atualizarPagamento)
 
+//EndPoint - Metodo DELETE
+router.delete("/ApagarPedidos/:id" ,new PedidosControllers().apagarPedidos)
+
 export default router
 
