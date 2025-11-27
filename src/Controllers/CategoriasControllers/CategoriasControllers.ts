@@ -1,11 +1,11 @@
 import {Request, Response} from "express"
-import {ServicesController} from "../../Services/ServicesCategorias/ServicesCategorias"
+import {ServicesCategoria} from "../../Services/ServicesCategorias/ServicesCategorias"
 
 class CategoriasControllers {
     async categoriasControllers (req: Request, res:Response) {
         const {categoria} = req.body
-        const enviarDados = new ServicesController()
-        const resposta = await enviarDados.servicesController({
+        const enviarDados = new ServicesCategoria()
+        const resposta = await enviarDados.servicesCategoria({
             categoria
         })
 
@@ -13,14 +13,14 @@ class CategoriasControllers {
     }
 
     async visualizarCategorias(req:Request, res:Response){
-        const enviarDados =  new ServicesController()
-        const resposta =  await enviarDados.visualizarPagamento()
+        const enviarDados =  new ServicesCategoria()
+        const resposta =  await enviarDados.visualizarCategoria()
         return res.json(resposta)
     }
 
     async atualizarCategorias(req:Request, res:Response){
         const {id,categoria} = req.body
-        const enviarDados = new ServicesController()
+        const enviarDados = new ServicesCategoria()
         const resposta = await enviarDados.atualizarCategoria({
             id,
             categoria

@@ -1,7 +1,7 @@
 import { Router } from "express"
 import {ClientesControllers} from "./Controllers/ClientesControllers/ClientesControllers"
 import { PedidosControllers } from "./Controllers/PedidosControllers/PedidosControllers"
-import {CategoriasControllers} from "./Controllers/CategoriasControllers/CatetegoriasControllers"
+import {CategoriasControllers} from "./Controllers/CategoriasControllers/CategoriasControllers"
 import {ProdutosControllers} from "./Controllers/ProdutosControllers/ProdutosControllers"
 import {ItensPedidosControllers} from "./Controllers/ItensPedidosControllers/ItensPedidosControllers"
 import {PagamentoControllers} from "./Controllers/PagamentoControllers/PagamentoControllers"

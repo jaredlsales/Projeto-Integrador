@@ -9,8 +9,8 @@ interface VisualizarCategoria {
     categoria: string
 }
 
-class ServicesController {
-    async servicesController ({categoria}: Categoria) {
+class ServicesCategoria {
+    async servicesCategoria ({categoria}: Categoria) {
         await prismaClient.categorias.create({
             data: {
                 categoria:categoria
@@ -22,7 +22,7 @@ class ServicesController {
 
     }
 
-    async visualizarPagamento (){
+    async visualizarCategoria (){
         const resposta =  await prismaClient.categorias.findMany({
             select:{
                 id: true,
@@ -50,4 +50,4 @@ class ServicesController {
 }
 
 
-export {ServicesController}
+export {ServicesCategoria}
