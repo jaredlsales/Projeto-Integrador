@@ -32,6 +32,16 @@ class ItensPedidosControllers {
 
         return res.json(resposta)
     }
+
+    async apagarItensPedidos (req:Request, res:Response){
+        const {id} = req.params
+        const enviarDados =  new ServicesItensPedidos()
+        const resposta =  await enviarDados.apagarItensPedidos({
+            id
+        })
+
+        return res.json(resposta)
+    }
 }
 
 

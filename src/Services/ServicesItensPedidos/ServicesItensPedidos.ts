@@ -13,6 +13,10 @@ interface AtualizarItensPedidos {
     total_unitario: number,
 }
 
+interface ApagarItensPedidos {
+    id: string
+}
+
 class ServicesItensPedidos {
     async servicesItensPedidos ({quantidade,total_unitario,idPedido,idProduto}: ItensPedidos){
         await prismaClient.itensPedidos.create({
@@ -54,6 +58,16 @@ class ServicesItensPedidos {
 
         return ({dados:"Alteração feita com sucesso"})
 
+    }
+
+    async apagarItensPedidos({id}: ApagarItensPedidos){
+        await prismaClient.itensPedidos.delete({
+            where:{
+                id:id
+            }
+        })
+
+        return ({dados:"Registro excluido com sucesso"})
     }
 
 }

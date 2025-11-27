@@ -36,6 +36,7 @@ router.put("/AtualizarPagamento", new PagamentoControllers().atualizarPagamento)
 router.delete("/ApagarPedidos/:id" ,new PedidosControllers().apagarPedidos)
 router.delete("/ApagarCategoria/:id", new CategoriasControllers().apagarCategorias)
 router.delete("/ApagarProdutos/:id", new ProdutosControllers().apagarProdutos)
+router.delete("/ApagarItensPedidos/:id", new ItensPedidosControllers().apagarItensPedidos )
 
 
 export default router
