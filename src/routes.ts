@@ -27,6 +27,7 @@ router.get("/VisualizarCategoria", new CategoriasControllers().visualizarCategor
 //EndPoint - Metodo PUT (Update)
 router.put("/AtualizarCLientes", new ClientesControllers().atualizarClientes)
 router.put("/AtualizarPedidos", new PedidosControllers().atualizarPedidos)
+router.put("/AtualizarCategorias", new CategoriasControllers().atualizarCategorias)
 
 export default router
 

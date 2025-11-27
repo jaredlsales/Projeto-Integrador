@@ -17,6 +17,17 @@ class CategoriasControllers {
         const resposta =  await enviarDados.visualizarPagamento()
         return res.json(resposta)
     }
+
+    async atualizarCategorias(req:Request, res:Response){
+        const {id,categoria} = req.body
+        const enviarDados = new ServicesController()
+        const resposta = await enviarDados.atualizarCategoria({
+            id,
+            categoria
+        })
+
+        return res.json(resposta)
+    }
 }
 
 

@@ -4,6 +4,11 @@ interface Categoria {
     categoria: string
 }
 
+interface VisualizarCategoria {
+    id: string,
+    categoria: string
+}
+
 class ServicesController {
     async servicesController ({categoria}: Categoria) {
         await prismaClient.categorias.create({
@@ -26,6 +31,20 @@ class ServicesController {
         })
 
         return resposta
+        
+    }
+
+    async atualizarCategoria({id, categoria}: VisualizarCategoria){
+        await prismaClient.categorias.update({
+            where:{
+                id:id
+            },
+            data:{
+                categoria:categoria
+            }
+        })
+
+        return ({dados:"Alteração feito com sucesso"})
         
     }
 }
