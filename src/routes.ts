@@ -28,6 +28,7 @@ router.get("/VisualizarCategoria", new CategoriasControllers().visualizarCategor
 router.put("/AtualizarCLientes", new ClientesControllers().atualizarClientes)
 router.put("/AtualizarPedidos", new PedidosControllers().atualizarPedidos)
 router.put("/AtualizarCategorias", new CategoriasControllers().atualizarCategorias)
+router.put("/AtualizarProdutos", new ProdutosControllers().atualizarProdutos)
 
 export default router
 

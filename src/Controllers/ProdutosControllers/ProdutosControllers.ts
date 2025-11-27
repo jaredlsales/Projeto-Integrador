@@ -20,6 +20,19 @@ class ProdutosControllers {
         const resposta = await enviarDados.visualizarProdutos()
         return res.json(resposta)
     }
+
+    async atualizarProdutos (req:Request, res:Response){
+        const {id, nome_produto,descricao,valor} = req.body
+        const enviarDados = new ServicesProdutos()
+        const resposta = await enviarDados.atualizarProdutos({
+            id,
+            nome_produto,
+            descricao,
+            valor
+        })
+
+        return res.json(resposta)
+    }
     
 }
 

@@ -7,6 +7,13 @@ interface Produtos {
     idCategoria: string
 }
 
+interface AtualizarProdutos {
+    id: string,
+    nome_produto: string,
+    descricao: string,
+    valor: number,
+}
+
 class ServicesProdutos {
     async servicesProdutos ({nome_produto,descricao,valor,idCategoria}: Produtos) {
         await prismaClient.produtos.create({
@@ -34,6 +41,21 @@ class ServicesProdutos {
 
         return resposta
         
+    }
+
+    async atualizarProdutos({id, nome_produto, descricao, valor}: AtualizarProdutos){
+        await prismaClient.produtos.update({
+            where:{
+                id:id
+            },
+            data:{
+                nome_produto:nome_produto,
+                descricao:descricao,
+                valor:valor
+            }
+        })
+
+        return ({dados:"Alteração feito com sucesso"})
     }
 }
 
