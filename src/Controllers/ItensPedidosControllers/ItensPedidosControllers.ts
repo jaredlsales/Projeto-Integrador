@@ -20,6 +20,18 @@ class ItensPedidosControllers {
         const resposta = await enviarDados.visualizarItensPedidos()
         return res.json(resposta)
     }
+
+    async atualizarItensPedidos (req:Request, res:Response){
+        const {id, quantidade, total_unitario} = req.body
+        const enviarDados =  new ServicesItensPedidos()
+        const resposta = await enviarDados.atualizarItensPedidos({
+            id,
+            quantidade,
+            total_unitario
+        })
+
+        return res.json(resposta)
+    }
 }
 
 
