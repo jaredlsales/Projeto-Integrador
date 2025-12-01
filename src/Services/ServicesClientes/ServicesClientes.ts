@@ -17,6 +17,10 @@ interface AtualizarClientes {
     data_nascimento: Date
 }
 
+interface ApagarClientes {
+    id: string
+}
+
 class ServicesClientes {
     async servicesClientes ({nome,email,senha,telefone,data_nascimento}: Clientes ) {
         const emailExiste =  await prismaClient.clientes.findFirst({
@@ -79,6 +83,36 @@ class ServicesClientes {
 
         return ({dados:"Alteração feita com sucesso"})
     }
+
+    async apagarClientes({id}: ApagarClientes){
+        const idNaoExiste = await prismaClient.clientes.findFirst({
+            where:{
+                id:id
+            }
+        })
+
+        if(!idNaoExiste){
+            throw new Error("Registro não encontrado")
+        }
+
+        await prismaClient.pedidos.deleteMany({
+        where:{
+                idCliente:id
+            }
+        })
+
+        await prismaClient.clientes.delete({
+            where:{
+                id:id
+            }
+        })
+
+
+
+        return ({dados:"Registro Excluido com sucesso"})
+    }
+
+
 }
 
 

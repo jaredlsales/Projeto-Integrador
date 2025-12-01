@@ -36,6 +36,16 @@ class ClientesControllers {
         return res.json(resposta)
     }
 
+    async apagarClientes (req:Request, res:Response){
+        const {id} = req.params
+        const enviarDados =  new ServicesClientes()
+        const resposta =  await enviarDados.apagarClientes({
+            id
+        })
+
+        return res.json(resposta)
+    }
+
 }
 
 

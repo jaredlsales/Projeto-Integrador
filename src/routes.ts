@@ -38,6 +38,7 @@ router.delete("/ApagarCategoria/:id", new CategoriasControllers().apagarCategori
 router.delete("/ApagarProdutos/:id", new ProdutosControllers().apagarProdutos)
 router.delete("/ApagarItensPedidos/:id", new ItensPedidosControllers().apagarItensPedidos )
 router.delete("/ApagarPagamento/:id", new PagamentoControllers().apagarPagamento)
+router.delete("/ApagarClientes/:id", new ClientesControllers().apagarClientes)
 
 
 export default router
