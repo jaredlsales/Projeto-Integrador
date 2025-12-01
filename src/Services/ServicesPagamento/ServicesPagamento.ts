@@ -57,6 +57,17 @@ class ServicesPagamentos {
     }
 
     async apagarPagamento({id}: ApagarPagamento){
+
+        const idNaoExiste = await prismaClient.pagamento.findFirst({
+            where:{
+                id:id
+            }
+        })
+
+        if(!idNaoExiste){
+            throw new Error("Registro não encontrado")
+        }
+        
         await prismaClient.pagamento.delete({
             where:{
                 id:id

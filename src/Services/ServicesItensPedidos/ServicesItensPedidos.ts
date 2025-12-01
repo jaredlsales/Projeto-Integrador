@@ -61,6 +61,16 @@ class ServicesItensPedidos {
     }
 
     async apagarItensPedidos({id}: ApagarItensPedidos){
+        const idNaoExiste = await prismaClient.itensPedidos.findFirst({
+            where:{
+                id:id
+            }
+        })
+
+        if(!idNaoExiste){
+            throw new Error("Registro não encontrado")
+        }
+
         await prismaClient.itensPedidos.delete({
             where:{
                 id:id

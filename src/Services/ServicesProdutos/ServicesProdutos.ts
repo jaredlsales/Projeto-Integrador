@@ -63,6 +63,16 @@ class ServicesProdutos {
     }
 
     async apagarProdutos ({id}: ApagarProdutos){
+        const idNaoExiste =  await prismaClient.produtos.findFirst({
+            where:{
+                id:id
+            }
+        })
+
+        if(!idNaoExiste){
+            throw new Error("Registro não encontrado")
+        }
+
         await prismaClient.produtos.delete({
             where:{
                 id:id

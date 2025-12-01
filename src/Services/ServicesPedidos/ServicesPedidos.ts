@@ -62,6 +62,15 @@ class ServicesPedidos {
     }
 
     async apagarPedidos ({id}: ApagarPedidos){
+        const idNaoExiste = await prismaClient.pedidos.findFirst({
+            where:{
+                id:id
+            }
+        })
+
+        if(!idNaoExiste){
+            throw new Error("Registro não encontrad")
+        }
         //Somente apagando os ItensPedidos e Pagamentos que sao "filhos" que vai conseguir apagar os pedidos.
         //O erro no Insomnia aconteceu porque o banco não deixava você apagar um Pedido que ainda tinha ItensPedidos e Pagamentos vinculados. Isso é esperado em bancos relacionais: primeiro você precisa remover os filhos, depois o pai.
         //Apagar todos os itens vinculados ao pedido (registros filhos -dependentes-) 

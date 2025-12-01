@@ -53,6 +53,16 @@ class ServicesCategoria {
     }
 
     async apagarCategoria({id}: ApagarCategoria){
+        const  idNaoExiste = await prismaClient.categorias.findFirst({
+            where:{
+                id:id
+            }
+        })
+
+        if(!idNaoExiste){
+            throw new Error ("Registro não encontrado")
+        }
+
         await prismaClient.categorias.delete({
             where:{
                 id:id
