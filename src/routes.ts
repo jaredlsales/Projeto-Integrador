@@ -5,6 +5,7 @@ import {CategoriasControllers} from "./Controllers/CategoriasControllers/Categor
 import {ProdutosControllers} from "./Controllers/ProdutosControllers/ProdutosControllers"
 import {ItensPedidosControllers} from "./Controllers/ItensPedidosControllers/ItensPedidosControllers"
 import {PagamentoControllers} from "./Controllers/PagamentoControllers/PagamentoControllers"
+import {LoginClientesControllers} from "./Controllers/LoginClientesControllers/LoginClientesControllers"
 
 const router = Router()
 
@@ -39,6 +40,9 @@ router.delete("/ApagarProdutos/:id", new ProdutosControllers().apagarProdutos)
 router.delete("/ApagarItensPedidos/:id", new ItensPedidosControllers().apagarItensPedidos )
 router.delete("/ApagarPagamento/:id", new PagamentoControllers().apagarPagamento)
 router.delete("/ApagarClientes/:id", new ClientesControllers().apagarClientes)
+
+//EndPoint - LoginClientes
+router.post("/CadastroLogin", new LoginClientesControllers().loginClientesControllers)
 
 
 export default router
