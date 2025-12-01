@@ -18,6 +18,23 @@ interface AtualizarClientes {
 
 class ServicesClientes {
     async servicesClientes ({nome,email,senha,telefone,data_nascimento}: Clientes ) {
+        const emailExiste =  await prismaClient.clientes.findFirst({
+            where:{
+                OR:[
+                    {
+                        email:email
+                    }
+                ]
+            }
+        })
+
+
+        if(emailExiste){
+            throw new Error("Email já está cadastrado")
+        }
+
+
+
         await prismaClient.clientes.create({
             data: {
                 nome:nome,
