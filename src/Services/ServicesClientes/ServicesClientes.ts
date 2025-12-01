@@ -12,7 +12,6 @@ interface AtualizarClientes {
     id: string,
     nome: string,
     email: string,
-    senha: string,
     telefone: string,
     data_nascimento: Date
 }
@@ -47,7 +46,7 @@ class ServicesClientes {
         
     }
 
-    async atualizarClientes({id, nome, email, senha, telefone, data_nascimento}: AtualizarClientes){
+    async atualizarClientes({id, nome, email, telefone, data_nascimento}: AtualizarClientes){
         await prismaClient.clientes.update({
             where:{
                 id:id
@@ -55,7 +54,6 @@ class ServicesClientes {
             data:{
                 nome:nome,
                 email:email,
-                senha:senha,
                 telefone:telefone,
                 data_nascimento:data_nascimento
             }

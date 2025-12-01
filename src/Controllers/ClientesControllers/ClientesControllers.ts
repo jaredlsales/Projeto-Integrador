@@ -23,13 +23,12 @@ class ClientesControllers {
     }
 
     async atualizarClientes (req:Request, res:Response){
-        const {id, nome, email, senha, telefone, data_nascimento} = req.body
+        const {id, nome, email, telefone, data_nascimento} = req.body
         const enviarDados =  new ServicesClientes()
         const resposta =  await enviarDados.atualizarClientes({
             id,
             nome,
             email,
-            senha,
             telefone,
             data_nascimento
         })
