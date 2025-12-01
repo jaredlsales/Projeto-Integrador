@@ -42,7 +42,7 @@ router.delete("/ApagarPagamento/:id", new PagamentoControllers().apagarPagamento
 router.delete("/ApagarClientes/:id", new ClientesControllers().apagarClientes)
 
 //EndPoint - LoginClientes
-router.post("/CadastroLogin", new LoginClientesControllers().loginClientesControllers)
+router.post("/LoginControllers", new LoginClientesControllers().loginClientesControllers)
 
 
 export default router
