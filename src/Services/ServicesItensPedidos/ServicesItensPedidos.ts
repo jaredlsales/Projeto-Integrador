@@ -37,6 +37,16 @@ class ServicesItensPedidos {
                 id: true,
                 quantidade: true,
                 total_unitario: true,
+                pedidos:{
+                    select:{
+                        numero_pedido: true
+                    }
+                },
+                produtos:{
+                    select:{
+                        categorias: true
+                    }
+                }
                 
             }
         })
