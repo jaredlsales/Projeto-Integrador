@@ -39,7 +39,8 @@ class ServicesProdutos {
                 id: true,
                 nome_produto: true,
                 descricao: true,
-                valor: true
+                valor: true,
+                idCategoria: true
             }
         })
 
